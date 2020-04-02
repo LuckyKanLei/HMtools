@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585518755121.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "499974842",
+    "id" : "84B34473",
+    "lastKnownWriteTime" : 1585520050,
+    "last_content_update" : 1585520050878,
+    "path" : "F:/G2/R-program/RPackge/HMtools/R/interpolation.R",
+    "project_path" : "R/interpolation.R",
+    "properties" : {
+        "cursorPosition" : "6,3",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
