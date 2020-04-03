@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2434687640",
+    "hash" : "1571452786",
     "id" : "BFB46F0D",
-    "lastKnownWriteTime" : 1585520528,
-    "last_content_update" : 1585520528730,
-    "path" : "F:/G2/R-program/RPackge/HMtools/R/classify.R",
-    "project_path" : "R/classify.R",
+    "lastKnownWriteTime" : 1585950702,
+    "last_content_update" : 1585950702669,
+    "path" : "F:/G2/R-program/RPackge/HMtools/R/geoTools.R",
+    "project_path" : "R/geoTools.R",
     "properties" : {
-        "cursorPosition" : "1,15",
-        "scrollLine" : "0"
+        "cursorPosition" : "64,9",
+        "scrollLine" : "50"
     },
     "read_only" : false,
     "read_only_alternatives" : [

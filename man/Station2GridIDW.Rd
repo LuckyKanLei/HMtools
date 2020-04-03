@@ -4,20 +4,23 @@
 \alias{Station2GridIDW}
 \title{Station-Data interpolation to Grid-Data with IDW}
 \usage{
-Station2GridIDW(StationLocation, GridLocation, StationData, StationN = 5)
+Station2GridIDW(StationLocation, GridLocation, StationData, cacuStationN = 5)
 }
 \arguments{
-\item{StationLocation}{n* 2(latiyude, longitude) matix of station}
+\item{StationLocation}{n* 3(ID, Latitude, Longitude) 2-array of station}
 
-\item{GridLocation}{n * 2(latiyude, longitude) 2-array of Grid}
+\item{GridLocation}{n * 3(ID, Latitude, Longitude) 2-array of Grid}
 
-\item{StationData}{Ntime * Nstation * Nfild 3-array of data from station}
+\item{StationData}{3-array(periodN, stationN, fieldN) of data from station}
 
-\item{StationN}{how many Station are relevant for a grid}
+\item{cacuStationN}{= 5 how many Station are relevant for a grid}
 }
 \value{
 Ntime * Nstation * Nfild 3-array of data for Grids
 }
 \description{
 Station-Data interpolation to Grid-Data with IDW
+}
+\examples{
+GridMetroData <- Station2GridIDW(SLC, GLC, SD)
 }

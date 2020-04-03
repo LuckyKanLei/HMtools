@@ -7,7 +7,10 @@ Maintainer: The package maintainer <mr_moment@outlook.com>
 Description: There are some small tools for hydrology modell.
 Imports:
     utils,
-    lubridate
+    lubridate,
+    plyr
+Depends:
+    R (>= 3.0.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
