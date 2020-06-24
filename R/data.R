@@ -42,3 +42,47 @@
 #' paramters set of landuse.
 #' @format 'data.frame' or 2-array(typN, paramN)
 "LLib"
+
+
+
+#' string for message
+#' @format 'chr'
+"AtomMess"
+
+#' string for message
+#' @format 'chr'
+"CheckOkMess"
+
+#' string for message
+#' @format 'chr'
+"BoundryString"
+
+#' string for message
+#' @format 'chr'
+"WaringString"
+
+#' string for message
+#' @format 'chr'
+"viewNote"
+
+#' string for message
+#' @format 'chr'
+"checkNote"
+
+
+
+
+
+# AtomMess <- "(It is a atom element, not a List)"
+# CheckOkMess <- "Checked OK!\n"
+# BoundryString <- "****************************************************\n"
+# WaringString <- "|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|\n"
+# viewNote <- "The \"VIEW\" mode returns a list of Arguments and output values(Out) for easy access to the input requirements and the output data structure.\n"
+# checkNote <- paste0("If \"CHECK\" mode reports an error or errors, please correct the error or errors and run \"CHECK\" mode again.\n",
+#                     "You can also view the specific structure of input Arguments through mode \"VIEW\".")
+# use_data(AtomMess,
+#          CheckOkMess,
+#          BoundryString,
+#          WaringString,
+#          viewNote,
+#          checkNote, internal = T)

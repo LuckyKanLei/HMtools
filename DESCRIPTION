@@ -8,6 +8,7 @@ Description: There are some small tools for hydrology modell.
 Imports:
     utils,
     lubridate,
+    purrr,
     plyr
 Depends:
     R (>= 3.0.0)
