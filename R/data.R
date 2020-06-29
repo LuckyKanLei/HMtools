@@ -55,6 +55,7 @@
 
 #' string for message
 #' @format 'chr'
+#' @export
 "BoundryString"
 
 #' string for message
@@ -63,6 +64,7 @@
 
 #' string for message
 #' @format 'chr'
+#' @export
 "viewNote"
 
 #' string for message

@@ -66,6 +66,7 @@ checkData <- function(Aim, Check, name){
   } else {
     message("ERROR: ", name, " missing: ", paste(AimNa[which(!judgeCT)], collapse = ", "), ".")
   }
+  message(checkNote)
   return()
 }
 
@@ -83,7 +84,7 @@ checkData <- function(Aim, Check, name){
 ##*## second methond for viewArgum
 #' @title viewArgum
 #' @description view the Arguments of a function
-#' @import purrr utils
+#' @importFrom utils str
 #' @param fcName function name
 #' @param Arguments Arguments
 #' @return return a list, includ Arguments and outdata,
