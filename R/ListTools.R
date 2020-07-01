@@ -353,3 +353,24 @@ deleteData.data.frame <- function(Left, Right){
 }
 
 
+#' put the atrribut
+#' @param Data Data of list or data,frame
+#' @param index index for the Data
+#' @param AttrNa name of the attribut
+#' @param AttrVa value of atrribut
+#' @return data with atrribut
+#' @export
+putAttr <- function(Data, index, AttrNa, AttrVa){
+  for(i in index) attr(Data[[i]], AttrNa) <- AttrVa
+  return(Data)
+}
+
+#' put the unit atrribut
+#' @param Data Data of list or data,frame
+#' @param AttrVa value of unit
+#' @return data with unit
+#' @export
+putUnit <- function(Data, AttrVa){
+  for(i in 1: length(Data)) attr(Data[[i]], "Unit") <- AttrVa[i]
+  return(Data)
+}
