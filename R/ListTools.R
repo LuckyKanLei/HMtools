@@ -17,7 +17,31 @@
 #' @param i index
 #' @return the ith data of one demision data or get the ith row of two demisions data
 #' @export
-getI <- function(Data, i) return(ifelse(length(dim(Data)) > 1, return(Data[i,]), return(Data[i])))
+getI <- function(Data, i){
+  dimN <- length(dim(Data))
+  if(dimN == 3) return(Data[i,,])
+  else if(dimN == 2) return(Data[i,])
+  else return(Data[i])
+}
+#' @title putI
+#' @description get the ith data of one demision data or get the ith row of two demisions data
+#' @import purrr
+#' @param Data Data
+#' @param i index
+#' @param PutD Put Data
+#' @return put the ith data of one demision data or put the ith row of two demisions data
+#' @export
+putI <- function(Data, i, PutD){
+  dimN <- length(dim(Data))
+  if(dimN == 2) {
+    Data[i,] <- PutD
+    return(Data)}
+
+  else if(dimN == 3) {
+    Data[i,,] <- PutD
+    return(Data)}
+  else return(Data)
+}
 
 #' @title getData
 #' @description Extract the data required by Locat in Data
@@ -190,6 +214,7 @@ mergeData.list <- function(Ori, New){
     if(class(A) == "data.frame" || class(A) == "list") return(mergeData(A, B)) else return(B)
   })
   Out <- c(OutOri, OutI, OutNew)
+  class(Out) <- class(Ori)
   return(Out)
 }
 #' @title mergeData.data.frame
