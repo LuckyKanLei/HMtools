@@ -2,20 +2,20 @@
 % Please edit documentation in R/hmlist.R
 \name{putList}
 \alias{putList}
-\title{putData.list}
+\title{putList}
 \usage{
-putList(PutData, Data, i)
+putList(Data, i, PutData)
 }
 \arguments{
-\item{PutData}{PutData}
-
 \item{Data}{the data, from it get the required data}
 
 \item{i}{index}
+
+\item{PutData}{PutData}
 }
 \value{
-Locat whith the required data
+list
 }
 \description{
-Extract the data required by Locat in Data for list
+put the data to a hm.list
 }

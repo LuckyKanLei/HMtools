@@ -2,7 +2,7 @@
 % Please edit documentation in R/hmlist.R
 \name{[.hm.list}
 \alias{[.hm.list}
-\title{getData.list}
+\title{subsetting for hm.list}
 \usage{
 \method{[}{hm.list}(Data, i)
 }
@@ -15,5 +15,5 @@
 Locat whith the required data
 }
 \description{
-Extract the data required by Locat in Data for list
+Extract the data
 }

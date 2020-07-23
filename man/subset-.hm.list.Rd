@@ -2,7 +2,7 @@
 % Please edit documentation in R/hmlist.R
 \name{[<-.hm.list}
 \alias{[<-.hm.list}
-\title{putData.list}
+\title{subsetting geben for hm.list}
 \usage{
 \method{[}{hm.list}(Data, i) <- value
 }
@@ -14,7 +14,7 @@
 \item{value}{value}
 }
 \value{
-Locat whith the required data
+new data
 }
 \description{
 Extract the data required by Locat in Data for list

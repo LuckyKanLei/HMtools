@@ -4,7 +4,7 @@
 \name{hm.list-class}
 \alias{hm.list-class}
 \alias{hm.list}
-\title{getData.list}
+\title{hm.list s4 class}
 \description{
-getData.list
+hm.list s4 class
 }

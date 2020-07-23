@@ -18,9 +18,12 @@
 #' @return the ith data of one demision data or get the ith row of two demisions data
 #' @export
 getI <- function(Data, i){
-  dimN <- length(dim(Data))
-  if(dimN == 3) return(Data[i,,])
-  else if(dimN == 2) return(Data[i,])
+  Dim <- dim(Data)
+  dimN <- length(Dim)
+  if(dimN == 2 & Dim[1] > 1) return(Data[i,])
+  else if(dimN == 3 & Dim[1] > 1) return(Data[i,,])
+  else if(dimN == 2 & Dim[1] == 1) return(Data[1,])
+  else if(dimN == 3 & Dim[1] == 1) return(Data[1,,])
   else return(Data[i])
 }
 #' @title putI
