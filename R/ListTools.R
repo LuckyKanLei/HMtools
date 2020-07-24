@@ -205,21 +205,37 @@ mergeData.list <- function(Ori, New){
   INa <- intersect(OrNa, NeNa)
   DONa <- setdiff(OrNa, NeNa)
   DNNa <- setdiff(NeNa, OrNa)
-  indexOR <- which(OrNa %in% DONa)
-  OutOri <- Ori[indexOR]
-  indexNE <- which(NeNa %in% DNNa)
-  OutNew <- New[indexNE]
-  indexORI <- as.integer(map(INa, function(a, b)which(b %in% a), OrNa))
-  indexNEI <- as.integer(map(INa, function(a, b)which(b %in% a), NeNa))
-  TemORI <- Ori[indexORI]
-  TemNEI <- New[indexNEI]
-  OutI <- map2(TemORI, TemNEI, function(A, B) {
-    if(class(A) == "data.frame" || class(A) == "list") return(mergeData(A, B)) else return(B)
-  })
-  Out <- c(OutOri, OutI, OutNew)
-  class(Out) <- class(Ori)
-  return(Out)
+  for (i in DNNa) {
+    Ori[[i]] <- New[[i]]
+  }
+  for(i in INa){
+    Ori[[i]] <- mergeData(Ori[[i]], New[[i]])
+  }
+  return(Ori)
 }
+
+# mergeData.list <- function(Ori, New){
+#   OrNa <- names(Ori)
+#   NeNa <- names(New)
+#   INa <- intersect(OrNa, NeNa)
+#   DONa <- setdiff(OrNa, NeNa)
+#   DNNa <- setdiff(NeNa, OrNa)
+#   indexOR <- which(OrNa %in% DONa)
+#   OutOri <- Ori[indexOR]
+#   indexNE <- which(NeNa %in% DNNa)
+#   OutNew <- New[indexNE]
+#   indexORI <- as.integer(map(INa, function(a, b)which(b %in% a), OrNa))
+#   indexNEI <- as.integer(map(INa, function(a, b)which(b %in% a), NeNa))
+#   TemORI <- Ori[indexORI]
+#   TemNEI <- New[indexNEI]
+#   OutI <- map2(TemORI, TemNEI, function(A, B) {
+#     if(class(A) == "data.frame" || class(A) == "list") return(mergeData(A, B)) else return(B)
+#   })
+#   Out <- c(OutOri, OutI, OutNew)
+#   class(Out) <- class(Ori)
+#   return(Out)
+# }
+
 #' @title mergeData.data.frame
 #' @description merge the data from Ori and New bei elments names for data.frame
 #' @import purrr

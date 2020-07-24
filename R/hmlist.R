@@ -85,19 +85,21 @@ putList <- function(Data, i, PutData){
 #' @return a data merged from Ori and New
 #' @export
 mergeData.hm.list <- function(Ori, New){
+  clNa <- class(Ori)
   class(Ori) <- "list"
   class(New) <- "list"
   OrNa <- names(Ori)
   NeNa <- names(New)
   INa <- intersect(OrNa, NeNa)
-  DONa <- setdiff(OrNa, NeNa)
   DNNa <- setdiff(NeNa, OrNa)
-  Ori[DNNa] <- New[DNNa]
-  for(i in INa){
-    Ori[i] <- mergeList(Ori[i], New[i])
+  for (i in DNNa) {
+    Ori[[i]] <- New[[i]]
   }
+  for(i in INa){
+    Ori[[i]] <- mergeList(Ori[[i]], New[[i]])
+  }
+  class(Ori) <- clNa
   return(Ori)
-
 }
 #' @title mergeData
 #' @description merge the data from Ori and New bei elments names
@@ -109,24 +111,10 @@ mergeList <- function(Ori, New){
   OrNa <- names(Ori)
   NeNa <- names(New)
   INa <- intersect(OrNa, NeNa)
-  DONa <- setdiff(OrNa, NeNa)
   DNNa <- setdiff(NeNa, OrNa)
-  Ori[DNNa] <- New[DNNa]
-  for(i in INa){
-    Ori[i] <- New[i]
+  for (i in NeNa) {
+    Ori[[i]] <- New[[i]]
   }
   return(Ori)
 }
 
-mergeData.list <- function(Ori, New){
-  OrNa <- names(Ori)
-  NeNa <- names(New)
-  INa <- intersect(OrNa, NeNa)
-  DONa <- setdiff(OrNa, NeNa)
-  DNNa <- setdiff(NeNa, OrNa)
-  Ori[DNNa] <- New[DNNa]
-  for(i in INa){
-    Ori[i] <- mergeData.list(Ori[i], New[i])
-  }
-  return(Ori)
-}
