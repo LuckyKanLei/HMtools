@@ -209,7 +209,8 @@ mergeData.list <- function(Ori, New){
     Ori[[i]] <- New[[i]]
   }
   for(i in INa){
-    Ori[[i]] <- mergeData(Ori[[i]], New[[i]])
+    if(class(Ori[[i]]) == "data.frame" || class(Ori[[i]]) == "list") Ori[[i]] <- mergeData(Ori[[i]], New[[i]])
+    else Ori[[i]] <- New[[i]]
   }
   return(Ori)
 }
@@ -364,19 +365,16 @@ deleteData.list <- function(Left, Right){
   InNa <- intersect(LeNa,RiNa)
   DiNa <- setdiff(LeNa,RiNa)
 
-  index <- as.integer(map(DiNa, function(a, b)which(b %in% a), LeNa))
-  Left0 <- Left[index]
+  Left0 <- Left[DiNa]
 
-  indexLI <- as.integer(map(InNa, function(a, b)which(b %in% a), LeNa))
-  indexRI <- as.integer(map(InNa, function(a, b)which(b %in% a), RiNa))
-  Left <- Left[indexLI]
-  Right <- Right[indexRI]
+  Left <- Left[InNa]
+  Right <- Right[InNa]
 
   Out0 <- map2(Left, Right, function(A, B) {
     if(class(A) == "data.frame" || class(A) == "list") return(deleteData(A, B))
   })
   Out <- c(Left0, Out0)
-  Out[which(as.logical(map(Out, is.null)))] <- NULL
+  Out[which(as.logical(map(Out, function(a) is.null(a) | length(a) == 0)))] <- NULL
   return(Out)
 }
 #' @title deleteData.data.frame
