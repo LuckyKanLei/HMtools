@@ -164,6 +164,21 @@ fctAcculation <- function(DirGrid, IDGrid) {
   return(AccBGrid)
 }
 
+#' caculate next grid from DirGrid
+#' @importClassesFrom raster RasterLayer
+#' @importFrom raster flowPath
+#' @param IDGrid RasterLayer,same size with DirGrid
+#' @param DirGrid RasterLayer,from raster::terrain(dem, opt = "flowdir")
+#' @return RasterLayer, next grid ID
+#' @export
+fctNextGrid <- function(IDGrid, DirGrid) {
+  NextGrid <- IDGrid
+  for (i in IDGrid[!is.na(IDGrid)]) {
+    PathL <- flowPath(DirGrid, which(IDGrid@data@values == i))
+    NextGrid@data@values[PathL[1]] <- IDGrid@data@values[PathL[2]]
+  }
+  return(NextGrid)
+}
 
 #' caculate ID of Next Grid
 #' @importClassesFrom raster RasterLayer

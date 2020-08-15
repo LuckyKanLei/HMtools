@@ -2,8 +2,10 @@
 % Please edit documentation in R/GeoTools.R
 \name{fctNextGrid}
 \alias{fctNextGrid}
-\title{caculate ID of Next Grid}
+\title{caculate next grid from DirGrid}
 \usage{
+fctNextGrid(DirGrid, IDGrid)
+
 fctNextGrid(DirGrid, IDGrid)
 }
 \arguments{
@@ -12,8 +14,12 @@ fctNextGrid(DirGrid, IDGrid)
 \item{IDGrid}{RasterLayer,same size with DirGrid}
 }
 \value{
+RasterLayer, next grid ID
+
 2-array(gridN,2) gridID and Next Grid ID
 }
 \description{
+caculate next grid from DirGrid
+
 caculate ID of Next Grid
 }
