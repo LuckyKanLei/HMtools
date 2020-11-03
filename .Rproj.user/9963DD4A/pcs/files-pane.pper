@@ -1,9 +1,9 @@
 {
-    "path" : "F:/G2/R-program/R-Packge/HMtools",
-    "sortOrder" : [
+    "path": "F:/G2/R-program/R-Packge/HMtools",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

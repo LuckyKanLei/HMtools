@@ -10,13 +10,15 @@
 #' GL = fctClassify(OGL, GID, 20, 0, 5)
 #' @export
 fctClassify <- function(OriginalWert, GridID, classifyN, leftDropN = 0, upDropN = 0){
+  OriginalWert <- as.matrix(OriginalWert)
+  GridID <- as.matrix(GridID)
   infoGridRowN = dim(GridID)[1]  #the rows number of FLOWDRIC
   infoGridColN = dim(GridID)[2]   #the clows number of FLOWDRIC
   if(leftDropN != 0) OriginalWert <- OriginalWert[, -(1:leftDropN)]
   if(upDropN != 0) OriginalWert <- OriginalWert[-(1:upDropN),]
   TableWert = array(0.0,c(1,3))
-  for (i in 1:infoGridColN) {
-    for (j in 1:infoGridRowN) {
+  for (j in 1:infoGridRowN) {
+    for (i in 1:infoGridColN) {
       if(!is.na(GridID[j,i])){
         LanduseTem = as.matrix(OriginalWert[(1 + (j - 1) * classifyN):(j * classifyN),
                                             (1 + (i - 1) * classifyN):(i * classifyN)])
@@ -187,7 +189,7 @@ fctNextGrid <- function(IDGrid, DirGrid) {
 #' @param IDGrid RasterLayer,same size with DirGrid
 #' @return 2-array(gridN,2) gridID and Next Grid ID
 #' @export
-fctNextGrid <- function(DirGrid, IDGrid) {
+fctNextGridID <- function(DirGrid, IDGrid) {
   gN = length(IDGrid[!is.na(IDGrid)])
   NextGridID <- array(0,c(gN, 2))
   for (i in IDGrid[!is.na(IDGrid)]) {

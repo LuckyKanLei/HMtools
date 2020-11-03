@@ -4,22 +4,16 @@
 \alias{fctNextGrid}
 \title{caculate next grid from DirGrid}
 \usage{
-fctNextGrid(DirGrid, IDGrid)
-
-fctNextGrid(DirGrid, IDGrid)
+fctNextGrid(IDGrid, DirGrid)
 }
 \arguments{
-\item{DirGrid}{RasterLayer,from raster::terrain(dem, opt = "flowdir")}
-
 \item{IDGrid}{RasterLayer,same size with DirGrid}
+
+\item{DirGrid}{RasterLayer,from raster::terrain(dem, opt = "flowdir")}
 }
 \value{
 RasterLayer, next grid ID
-
-2-array(gridN,2) gridID and Next Grid ID
 }
 \description{
 caculate next grid from DirGrid
-
-caculate ID of Next Grid
 }

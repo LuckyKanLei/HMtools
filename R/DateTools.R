@@ -25,3 +25,23 @@ toNDayofYear <- function(DateDay){
 toMON <- function(Date){
   return(toupper(month.abb[month(Date)]))
 }
+
+#' Make the month Data to the period Data.
+#' @param NMon the moth in number
+#' @param MonData the data in month scaler(12 \* gridN) or (gridN \* 12)
+#' @return the data in periodN
+#' @export
+fctMon2Period <- function(NMon, MonData){
+  if(dim(MonData)[1] == 12){
+    MonData <- t(MonData)
+    warning("The Data is to month-grid translate, if there is error, please make sure the dim of Data is (12, gridN).")
+  }
+  if(dim(MonData)[2] != 12) stop("Please make sure that there are 12 elements for every grid.")
+  periodN <- length(NMon)
+  gridN <- dim(MonData)[1]
+  PeriodData <- matrix(0.0, gridN, periodN)
+  for (i in 1:12) {
+    PeriodData[, which(NMon == i)] <- MonData[,i]
+  }
+  return(t(PeriodData))
+}
