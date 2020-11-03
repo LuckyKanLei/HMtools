@@ -26,7 +26,7 @@ geom_raster.seq <- function(raster, ...) geom_raster(data = raster.seq(raster), 
 #' @importFrom  utils head
 #' @export
 raster.div <- function(raster, breaks) {
-  r_points = rasterToPoints(r)
+  r_points = rasterToPoints(raster)
   r_df = data.frame(r_points)
   head(r_df) #breaks will be set to column "layer"
   r_df$fill=cut(r_df[[3]], breaks = breaks) #set breaks
