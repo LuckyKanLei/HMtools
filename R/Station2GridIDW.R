@@ -12,11 +12,13 @@ fctlengthtem <- function(a,b){
 #' @param GridLocation n * 3(ID, Latitude, Longitude) 2-array of Grid
 #' @param StationData 3-array(periodN, stationN, fieldN) of data from station
 #' @param cacuStationN = 5 how many Station are relevant for a grid
+#' @param wightCoefficient = 2 wight Coefficient k, 1-5
 #' @return Ntime * Nstation * Nfild 3-array of data for Grids
 #' @examples
 #' GridMetroData <- Station2GridIDW(SLC, GLC, SD)
 #' @export
-Station2GridIDW <- function(StationLocation, GridLocation, StationData, cacuStationN = 5){
+Station2GridIDW <- function(StationLocation, GridLocation, StationData,
+                            cacuStationN = 5, wightCoefficient = 2){
 
   periodN <- dim(StationData)[1]
   stationN <- length(StationLocation$ID)
@@ -30,8 +32,8 @@ Station2GridIDW <- function(StationLocation, GridLocation, StationData, cacuStat
   GridData <- array(0.0,dim = c(periodN, gridN, fieldN))
   LengthG2STemLong <- outer(GridLocation$Longitude, StationLocation$Longitude, fctlengthtem)
   LengthG2STemLati <- outer(GridLocation$Latitude, StationLocation$Latitude, fctlengthtem)
-  LengthG2STem <- LengthG2STemLong + LengthG2STemLati
-  LengthG2S <- LengthG2STem^0.5
+  LengthG2STem <- sqrt(LengthG2STemLong + LengthG2STemLati)
+  LengthG2S <- LengthG2STem^(-wightCoefficient)
   LengthG2Ssamllst5S <- array(0.0, c(gridN, stationN))
   for (i in 1:gridN) {
     LengthG2Ssamllst5S[i,order(LengthG2S[i,])[1:cacuStationN]] <- LengthG2S[i,order(LengthG2S[i,])[1:cacuStationN]]
