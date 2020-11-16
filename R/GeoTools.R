@@ -34,6 +34,7 @@ fctClassify <- function(OriginalWert, GridID, classifyN, leftDropN = 0, upDropN 
       else next
     }
   }
+
   TableWert <- TableWert[-1,]
   TableWert <- as.data.frame(TableWert)
   names(TableWert) = c("GridID", "Wert", "Rate")

@@ -1,4 +1,4 @@
-#' Station-Data interpolation to Grid-Data with point-Krige
+#' @title  Station-Data interpolation to Grid-Data with point-Krige
 #' @param StationLocation n* 3(ID, Latitude, Longitude) 2-array of station
 #' @param GridLocation n * 3(ID, Latitude, Longitude) 2-array of Grid
 #' @param StationData 3-array(periodN, stationN, fieldN) of data from station
