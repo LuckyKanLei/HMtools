@@ -120,10 +120,10 @@ Aerodyna <- setClass("Aerodyna",
                                WindSpeedSnow = "array"))
 
 
-#' @title EvaTrans s4 class
+#' @title Evatrans s4 class
 #' @importFrom methods new
-#' @export EvaTrans
-EvaTrans <- setClass("ET",
+#' @export Evatrans
+Evatrans <- setClass("Evatrans",
                slots = c(RET = "array",
                          ET = "array",
                          Transpiration = "array",
@@ -170,10 +170,10 @@ Infilt <- setClass("Infilt",
 #' @export Snow
 Snow <- setClass("Snow",
                  slots = c(Boling = "array"))
-#' @title HM.Data s4 class
+#' @title HM.MData s4 class
 #' @importFrom methods new
-#' @export HM.Data
-HM.Data <- setClass("HM.Data",
+#' @export HM.MData
+HM.MData <- setClass("HM.MData",
                     slots = c(MetData = "MetData",
                               VegData = "VegData",
                               GeoData = "GeoData",
@@ -184,12 +184,16 @@ HM.Data <- setClass("HM.Data",
                               Aerodyna = "Aerodyna",
                               Prec = "Prec",
                               Canopy = "Canopy",
-                              ET = "ET",
+                              Evatrans = "Evatrans",
                               Intercept = "Intercept",
                               Ground = "Ground",
                               Infilt = "Infilt",
                               # Runoff = "Runoff",
                               Snow = "Snow"))
+#' @title HM.Data s4 class
+#' @importFrom methods new
+#' @export HM.Data
+HM.Data <- setClass("HM.Data")
 
 #' @title subsetting for HM.Data
 #' @description Extract the data
