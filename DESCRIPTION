@@ -1,7 +1,7 @@
 Package: HMtools
 Type: Package
 Title: some small tools for hydrology modell
-Version: 0.1.3
+Version: 0.1.4
 Author: person("Kan", "Lei", email = "mr_moment@outlook.com", role = "aut")
 Maintainer: The package maintainer <mr_moment@outlook.com>
 Description: There are some small tools for hydrology modell.
