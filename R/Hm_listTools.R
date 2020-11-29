@@ -89,7 +89,14 @@ putI_sub_hm.list <- function(Data, i, value){
 #' @return new data
 #' @export
 '[<-.t_vari.hm.list' <- function(Data, i, value){
+  browser()
   DaNa <- names(Data)
+  if(is.numeric(value)) {
+    for (j in DaNa) {
+      Data[[j]] <- map(Data[[j]], putI_t_vari.array, i, value)
+    }
+    return(Data)
+  }
   PuNa <- names(value)
   INa <- intersect(DaNa,PuNa)
   for (j in INa) {
@@ -97,6 +104,7 @@ putI_sub_hm.list <- function(Data, i, value){
   }
   return(Data)
 }
+
 
 #' @title merge_sub_list
 #' @description merge the data from Ori and New bei elments names
@@ -183,6 +191,47 @@ left_join.hm.list <- function(Ori, New){
   return(Ori)
 }
 
+
+#' @title intersect_sub_list
+#' @description intersect the data from Ori and New bei elments names
+#' @param Ori the original data
+#' @param New the new data
+#' @return a data intersectd from Ori and New
+#' @export
+intersect_sub_list <- function(Ori, New){
+  OrNa <- names(Ori)
+  NeNa <- names(New)
+  INa <- intersect(OrNa, NeNa)
+  if(length(INa) == 0) return(NULL)
+  return(New[INa])
+}
+
+#' @title left_intersect
+#' @description intersect the data from Ori and New bei elments names
+#' @param Ori the original data
+#' @param New the new data
+#' @return a data intersectd from Ori and New
+#' @export
+left_intersect <- function(Ori, New) UseMethod("left_intersect", Ori)
+
+#' @title left_intersect
+#' @description intersect the data from Ori and New bei elments names
+#' @param Ori the original data
+#' @param New the new data
+#' @return a data intersectd from Ori and New
+#' @export
+left_intersect.hm.list <- function(Ori, New){
+  OrNa <- names(Ori)
+  NeNa <- names(New)
+  INa <- intersect(OrNa, NeNa)
+  Out <- hm.list()
+  for(i in INa){
+    Out[[i]] <- Ori[[i]]
+    Out[[i]] <- intersect_sub_list(Ori[[i]], New[[i]])
+  }
+  return(Out)
+}
+
 #' @title delete_sub_list
 #' @description delete the data from Ori and New bei elments names
 #' @param Ori the original data
@@ -196,6 +245,7 @@ delete_sub_list <- function(Ori, New){
   for (i in INa) {
     Ori[[i]] <- NULL
   }
+  if(length(Ori) == 0) return(NULL)
   return(Ori)
 }
 
@@ -222,5 +272,37 @@ left_delete.hm.list <- function(Ori, New){
   }
   return(Ori)
 }
+
+judge_sub_list <- function(Data, i, Judge){
+  OrNa <- names(Data)
+  NeNa <- names(Judge)
+  INa <- intersect(OrNa, NeNa)
+  for (j in INa) {
+    if(i == 1){
+      if(Data[[j]][[1]] == 0 && Data[[j]][[2]] == 0) Data[[j]][[1]] <- 1
+      if(Data[[j]][[1]] == 0 && Data[[j]][[2]] == 1) Data[[j]][[3]] <- 1
+    }
+    else{
+      Data[[j]][[2]] <- 1
+    }
+
+  }
+  return(Data)
+}
+
+set_judge <- function(Data, i, Judge) UseMethod("set_judge", Data)
+
+set_judge.hm.list <- function(Data, i, Judge){
+  OrNa <- names(Data)
+  NeNa <- names(Judge)
+  INa <- intersect(OrNa, NeNa)
+  for(j in INa){
+    Data[[j]] <- judge_sub_list(Data[[j]], i, Judge[[j]])
+  }
+  return(Data)
+}
+
+
+
 
 
