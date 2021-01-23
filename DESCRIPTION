@@ -14,7 +14,8 @@ Imports:
     utils,
     methods,
     stats,
-    ggplot2
+    ggplot2,
+    geosphere
 Depends:
     R (>= 3.0.0)
 License: GPL-3
