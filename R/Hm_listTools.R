@@ -7,7 +7,8 @@
 #' @export
 getI_t_vari.array <- function(Data, i){
   dimN <- length(dim(Data))
-  return(eval(parse(text = paste0("Data[c(", paste(i, collapse = ","),")",
+  if(is.null(dimN) | dimN == 1 | dimN == 0) return(Data[i])
+  else return(eval(parse(text = paste0("Data[c(", paste(i, collapse = ","),")",
                                   strrep(",", dimN - 1), "]"))))
 }
 #' @title subsetting for HM.Data
@@ -89,7 +90,6 @@ putI_sub_hm.list <- function(Data, i, value){
 #' @return new data
 #' @export
 '[<-.t_vari.hm.list' <- function(Data, i, value){
-  browser()
   DaNa <- names(Data)
   if(is.numeric(value)) {
     for (j in DaNa) {
@@ -302,6 +302,18 @@ set_judge.hm.list <- function(Data, i, Judge){
   return(Data)
 }
 
+#' @title na_check
+#' @description check the NA in the hm.list data
+#' @param Data the original data
+#' @return a data deleted from Ori and New
+#' @export
+na_check <- function(Data) {
+  Out <- map(Data, na_check_sub)
+  return(Out)
+}
+na_check_sub <- function(Data){
+  check_ <- map(Data, function(Data) any(is.na(Data)))
+}
 
 
 
